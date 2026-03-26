@@ -6279,6 +6279,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a797fdcbaee9bd40af134482da7ee49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 71c1683c-33d9-4aa5-869c-60a2fe3e5b43
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 34105618-1a11-44d2-bfa5-f32079551872
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 14d412e5-72a1-4600-945e-254b1990bbf5
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 33ce16b6-4757-4d05-8b10-4bd475add8c0
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 1422f19d-96d5-49b6-81e4-a32c91b04e0f
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 43a6d2f7-c8bf-4d4c-983b-56148e09a9a9
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    m_Flags: 0
 --- !u!1 &1740219307
 GameObject:
   m_ObjectHideFlags: 0
