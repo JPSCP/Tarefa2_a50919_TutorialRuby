@@ -7209,10 +7209,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2770825735217252338, guid: c55b4b8da13a75a48b1bbb823f6b4fb9, type: 3}
-      propertyPath: speed
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6203239753757866745, guid: c55b4b8da13a75a48b1bbb823f6b4fb9, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
@@ -7672,10 +7668,6 @@ PrefabInstance:
     - target: {fileID: 5385896328156258206, guid: 8967183882f349642a97490712d447a5, type: 3}
       propertyPath: m_Name
       value: DamageZone
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866195155074266549, guid: 8967183882f349642a97490712d447a5, type: 3}
-      propertyPath: m_SpriteTileMode
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7847521688991942488, guid: 8967183882f349642a97490712d447a5, type: 3}
       propertyPath: m_LocalPosition.x
