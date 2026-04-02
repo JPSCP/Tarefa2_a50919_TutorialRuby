@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -15,9 +16,6 @@ public class UIHandler : MonoBehaviour
         instance = this;
     }
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +24,10 @@ public class UIHandler : MonoBehaviour
         SetHealthValue(1.0f);
     }
 
-
-
-
     public void SetHealthValue(float percentage)
     {
         m_Healthbar.style.width = Length.Percent(100 * percentage);
-
-
     }
+
+
 }
