@@ -16,6 +16,10 @@ public class EnemyController : MonoBehaviour
     int direction = 1;
     bool broken = true;
 
+    // // Variables related to Audio
+    AudioSource audioSource;
+    public AudioClip fixClip;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +27,7 @@ public class EnemyController : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         timer = changeTime;
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -83,6 +88,14 @@ public class EnemyController : MonoBehaviour
         broken = false;
         rigidbody2d.simulated = false;
         animator.SetTrigger("Fixed");
+
+        audioSource.Stop();
+
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if (player != null)
+        {
+            player.PlaySound(fixClip);
+        }
     }
 
 }

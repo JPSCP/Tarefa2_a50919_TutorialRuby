@@ -24,8 +24,16 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     Vector2 moveDirection = new Vector2(1, 0);
 
-    // // Variables related to Projectile
+    // Variables related to Projectile
     public GameObject projectilePrefab;
+
+    // Variables related to audio
+    AudioSource audioSource;
+    public AudioClip footstepClip;
+    float footstepTimer;
+    public float footstepInterval = 0.4f;
+    public AudioClip projectileClip;
+    public AudioClip playerHitClip;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +42,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,6 +62,21 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Look Y", moveDirection.y);
         animator.SetFloat("Speed", move.magnitude);
 
+        if (move.magnitude > 0.1f)
+        {
+            footstepTimer -= Time.deltaTime;
+
+            if (footstepTimer <= 0f)
+            {
+                PlaySound(footstepClip);
+                footstepTimer = footstepInterval;
+            }
+        }
+        else
+        {
+            footstepTimer = 0;
+        }
+
 
         if (isInvincible)
         {
@@ -63,12 +87,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
         if (Input.GetKeyDown(KeyCode.C))
         {
             Launch();
         }
-
 
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -94,6 +116,7 @@ public class PlayerController : MonoBehaviour
             isInvincible = true;
             damageCooldown = timeInvincible;
             animator.SetTrigger("Hit");
+            PlaySound(playerHitClip);
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
@@ -105,7 +128,9 @@ public class PlayerController : MonoBehaviour
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(moveDirection, 300);
         animator.SetTrigger("Launch");
+        PlaySound(projectileClip);
     }
+
     void FindFriend()
     {
         RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, moveDirection, 1.5f, LayerMask.GetMask("NPC"));
@@ -117,5 +142,10 @@ public class PlayerController : MonoBehaviour
                 UIHandler.instance.DisplayDialogue();
             }
         }
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

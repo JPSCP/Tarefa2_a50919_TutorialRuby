@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
-
+    public AudioClip enemyHitClip;
 
     // Awake is called when the Projectile GameObject is instantiated
     void Awake()
@@ -32,6 +32,12 @@ public class Projectile : MonoBehaviour
         if (enemy != null)
         {
             enemy.Fix();
+
+            PlayerController player = FindObjectOfType<PlayerController>();
+            if (player != null)
+            {
+                player.PlaySound(enemyHitClip);
+            }
         }
 
         Destroy(gameObject);
