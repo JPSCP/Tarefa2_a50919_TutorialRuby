@@ -20,6 +20,9 @@ public class EnemyController : MonoBehaviour
     AudioSource audioSource;
     public AudioClip fixClip;
 
+    // // Variables related to Particle Effects
+    public ParticleSystem smokeEffect;
+
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +93,7 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Fixed");
 
         audioSource.Stop();
+        smokeEffect.Stop();
 
         PlayerController player = FindObjectOfType<PlayerController>();
         if (player != null)
